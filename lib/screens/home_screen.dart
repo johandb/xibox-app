@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 10.0,
                     ),
                     CircleAvatar(
-                      child: Image.asset('images/xibox.png'),
+                      child: Image.asset('images/xibox-logo.png'),
                       backgroundColor: Colors.white,
                       radius: 50.0,
                     ),
