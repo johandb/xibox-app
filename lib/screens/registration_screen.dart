@@ -46,7 +46,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   tag: 'logo',
                   child: Container(
                     height: 100.0,
-                    child: Image.asset('images/xibox.png'),
+                    child: Image.asset('images/xibox-logo.png'),
                   ),
                 ),
               ),

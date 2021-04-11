@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   tag: 'logo',
                   child: Container(
                     height: 100.0,
-                    child: Image.asset('images/xibox.png'),
+                    child: Image.asset('images/xibox-logo.png'),
                   ),
                 ),
               ),
