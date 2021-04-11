@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:xibox_app/pages/OverviewPage.dart';
 import 'package:xibox_app/utils/constants.dart';
 
+import '../utils/constants.dart';
+
 class TabNavigationItem {
   final Widget page;
   final String title;
@@ -18,22 +20,30 @@ class TabNavigationItem {
 
   static List<TabNavigationItem> get items => [
         TabNavigationItem(
-          page: OverviewPage(),
-          icon: Icon(Icons.email),
+          page: Container(),
+          icon: ImageIcon(
+            AssetImage('images/icons/my-xibox.png'),
+          ),
           title: 'My Xibox',
           color: kBlue,
         ),
         TabNavigationItem(
-          page: Container(),
-          icon: Icon(Icons.edit),
+          page: OverviewPage(),
+          icon: Image(
+            image: AssetImage('images/icons/xibox.png'),
+            width: 24.0,
+            height: 24.0,
+          ),
           title: 'Overview',
-          color: Colors.blue,
+          color: kBlue,
         ),
         TabNavigationItem(
           page: Container(),
-          icon: Icon(Icons.account_balance),
+          icon: ImageIcon(
+            AssetImage('images/icons/account.png'),
+          ),
           title: 'Account',
-          color: Colors.orange,
+          color: kBlue,
         ),
       ];
 }
