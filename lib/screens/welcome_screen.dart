@@ -30,12 +30,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Image.asset('images/xibox.png'),
-                    height: 100.0,
-                  ),
+                Container(
+                  child: Image.asset('images/xibox-logo.png'),
+                  height: 100.0,
                 ),
               ],
             ),
