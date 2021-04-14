@@ -20,40 +20,42 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  child: Image.asset('images/xibox-logo.png'),
-                  height: 100.0,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 100.0,
-            ),
-            XiBoxButton(
-              title: 'Login in',
-              colour: kBlue80,
-              onPressed: () {
-                Navigator.pushNamed(context, LoginScreen.id);
-              },
-            ),
-            XiBoxButton(
-              title: 'Sign-up',
-              colour: kBlue80,
-              onPressed: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
-              },
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    child: Image.asset('images/xibox-logo.png'),
+                    height: 100.0,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 100.0,
+              ),
+              XiBoxButton(
+                title: 'Login in',
+                colour: kBlue80,
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginScreen.id);
+                },
+              ),
+              XiBoxButton(
+                title: 'Sign-up',
+                colour: kBlue80,
+                onPressed: () {
+                  Navigator.pushNamed(context, RegistrationScreen.id);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_titled_container/flutter_titled_container.dart';
 import 'package:intl/intl.dart';
 import 'package:xibox_app/model/Xibox.dart';
 import 'package:xibox_app/utils/constants.dart';
@@ -16,16 +17,14 @@ class _OverviewPageState extends State<OverviewPage> {
   String _scanBarcode = 'Unknown';
 
   startBarcodeScanStream() async {
-    FlutterBarcodeScanner.getBarcodeStreamReceiver("#ff6666", "Cancel", true, ScanMode.BARCODE)
-        .listen((barcode) => print(barcode));
+    FlutterBarcodeScanner.getBarcodeStreamReceiver("#ff6666", "Cancel", true, ScanMode.BARCODE).listen((barcode) => print(barcode));
   }
 
   Future<void> scanQR() async {
     String barcodeScanRes;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      barcodeScanRes =
-          await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true, ScanMode.QR);
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true, ScanMode.QR);
       print(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
@@ -45,8 +44,7 @@ class _OverviewPageState extends State<OverviewPage> {
     String barcodeScanRes;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      barcodeScanRes =
-          await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true, ScanMode.BARCODE);
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true, ScanMode.BARCODE);
       print(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
@@ -145,36 +143,46 @@ class _OverviewPageState extends State<OverviewPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 150.0,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: kBlue80),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
+                        TitledContainer(
+                          titleColor: kBlue80,
+                          fontSize: 12,
+                          title: 'Account balance',
+                          child: Container(
+                            width: 150.0,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: kBlue80),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              kEuro + '32,50',
-                              style: TextStyle(fontSize: 32.0),
+                            child: Center(
+                              child: Text(
+                                kEuro + '32,50',
+                                style: TextStyle(fontSize: 32.0),
+                              ),
                             ),
                           ),
                         ),
                         SizedBox(
                           width: 20.0,
                         ),
-                        Container(
-                          width: 150.0,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: kBlue80),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
+                        TitledContainer(
+                          title: 'Deposit',
+                          titleColor: kBlue80,
+                          fontSize: 12,
+                          child: Container(
+                            width: 150.0,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: kBlue80),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              kEuro + '5,50',
-                              style: TextStyle(fontSize: 32.0),
+                            child: Center(
+                              child: Text(
+                                kEuro + '5,50',
+                                style: TextStyle(fontSize: 32.0),
+                              ),
                             ),
                           ),
                         ),
