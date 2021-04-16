@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:xibox_app/pages/OverviewPage.dart';
+import 'package:xibox_app/pages/account_page.dart';
+import 'package:xibox_app/pages/myxibox_page.dart';
+import 'package:xibox_app/pages/overview_page.dart';
 import 'package:xibox_app/utils/constants.dart';
 
 import '../utils/constants.dart';
@@ -20,7 +22,7 @@ class TabNavigationItem {
 
   static List<TabNavigationItem> get items => [
         TabNavigationItem(
-          page: Container(),
+          page: MyXiboxPage(),
           icon: ImageIcon(
             AssetImage('images/icons/my-xibox.png'),
           ),
@@ -38,7 +40,7 @@ class TabNavigationItem {
           color: kBlue,
         ),
         TabNavigationItem(
-          page: Container(),
+          page: AccountPage(),
           icon: ImageIcon(
             AssetImage('images/icons/account.png'),
           ),

@@ -31,7 +31,8 @@ dependencies:
   rflutter_alert: ^2.0.2
   intl: ^0.17.0
   flutter_barcode_scanner: ^1.0.2
-  flutter_titled_container: ^1.0.0
+  flutter_titled_container: ^1.0.4
+  sprintf: ^5.0.0
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_titled_container/flutter_titled_container.dart';
 import 'package:intl/intl.dart';
+import 'package:sprintf/sprintf.dart';
 import 'package:xibox_app/model/Xibox.dart';
 import 'package:xibox_app/utils/constants.dart';
 
@@ -64,7 +65,7 @@ class _OverviewPageState extends State<OverviewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Card(
             child: Column(
@@ -77,7 +78,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   margin: EdgeInsets.only(left: 5.0),
                   child: Text(
                     'Incoming XiBox',
-                    style: TextStyle(color: kBlue80, fontSize: 24.0),
+                    style: TextStyle(color: kBlue80, fontSize: 18.0),
                   ),
                 ),
                 Row(
@@ -135,7 +136,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   children: [
                     Text(
                       'Balance',
-                      style: TextStyle(color: kBlue80, fontSize: 24.0),
+                      style: TextStyle(color: kBlue80, fontSize: 18.0),
                     ),
                     SizedBox(
                       height: 20.0,
@@ -143,49 +144,11 @@ class _OverviewPageState extends State<OverviewPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TitledContainer(
-                          titleColor: kBlue80,
-                          fontSize: 12,
-                          title: 'Account balance',
-                          child: Container(
-                            width: 150.0,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: kBlue80),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                kEuro + '32,50',
-                                style: TextStyle(fontSize: 32.0),
-                              ),
-                            ),
-                          ),
-                        ),
+                        Money(title: 'Account balance', amount: 32.50),
                         SizedBox(
                           width: 20.0,
                         ),
-                        TitledContainer(
-                          title: 'Deposit',
-                          titleColor: kBlue80,
-                          fontSize: 12,
-                          child: Container(
-                            width: 150.0,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: kBlue80),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                kEuro + '5,50',
-                                style: TextStyle(fontSize: 32.0),
-                              ),
-                            ),
-                          ),
-                        ),
+                        Money(title: 'Deposit', amount: 5.50),
                       ],
                     ),
                   ],
@@ -304,6 +267,38 @@ class XiboxListView extends StatelessWidget {
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),
+    );
+  }
+}
+
+class Money extends StatelessWidget {
+  Money({this.title, this.amount});
+
+  final double amount;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return TitledContainer(
+      title: title,
+      titleColor: kBlue80,
+      fontSize: 12.0,
+      child: Container(
+        width: 150.0,
+        padding: EdgeInsets.only(top: 5.0),
+        decoration: BoxDecoration(
+          border: Border.all(color: kBlue80),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+        ),
+        child: Center(
+          child: Text(
+            sprintf('%s%5.2f', [kEuro, amount]),
+            style: TextStyle(fontSize: 32.0),
+          ),
+        ),
+      ),
     );
   }
 }
